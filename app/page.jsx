@@ -1,7 +1,11 @@
-"use client";
+import Hero from "@/components/Hero";
+
 const HomePage = () => {
-  console.log("<<<^^^^>>>");
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <Hero />
+    </div>
+  );
 };
 
 export default HomePage;
