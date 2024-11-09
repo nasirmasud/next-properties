@@ -1,0 +1,384 @@
+[
+  {
+    "_id": "1",
+    "owner": "1",
+    "name": "Boston Commons Retreat",
+    "type": "Apartment",
+    "description": "এটি কমন্সের কাছাকাছি অবস্থিত একটি সুন্দর এপার্টমেন্ট। এটি দুটি শয়নকক্ষের একটি এপার্টমেন্ট, যার সাথে একটি পূর্ণাঙ্গ রান্নাঘর ও বাথরুম রয়েছে। এটি সাপ্তাহিক বা মাসিক ভাড়ার জন্য উপলব্ধ।",
+    "location": {
+      "street": "২৩৫ কাওরান বাজার রোড",
+      "city": "ঢাকা",
+      "state": "ঢাকা",
+      "zipcode": "১২১৫"
+    },
+    "beds": 2,
+    "baths": 1,
+    "square_feet": 1500,
+    "amenities": [
+      "Wifi",
+      "পূর্ণাঙ্গ রান্নাঘর",
+      "ওয়াশার এবং ড্রায়ার",
+      "বিনামূল্যে পার্কিং",
+      "হট টব",
+      "২৪/৭ নিরাপত্তা",
+      "হুইলচেয়ার অ্যাক্সেস",
+      "এলিভেটর অ্যাক্সেস",
+      "ডিশওয়াশার",
+      "জিম/ফিটনেস সেন্টার",
+      "এয়ার কন্ডিশনিং",
+      "বারান্দা",
+      "স্মার্ট টিভি",
+      "কফি মেকার"
+    ],
+    "rates": {
+      "weekly": 1100,
+      "monthly": 4200
+    },
+    "seller_info": {
+      "name": "জন দো",
+      "email": "john@gmail.com",
+      "phone": "০১৭১২৩৪৫৬৭৮"
+    },
+    "images": ["a1.jpg", "a2.jpg", "a3.jpg"],
+    "is_featured": false,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "2",
+    "owner": "1",
+    "name": "Cozy Downtown Loft",
+    "type": "Apartment",
+    "description": "একটি আরামদায়ক ডাউনটাউন লফট যেখানে দুর্দান্ত শহরের দৃশ্য দেখা যায়।",
+    "location": {
+      "street": "৪৫ গুলশান এভিনিউ",
+      "city": "ঢাকা",
+      "state": "ঢাকা",
+      "zipcode": "১২১২"
+    },
+    "beds": 1,
+    "baths": 1,
+    "square_feet": 1800,
+    "amenities": [
+      "Wifi",
+      "পূর্ণাঙ্গ রান্নাঘর",
+      "ওয়াশার এবং ড্রায়ার",
+      "বিনামূল্যে পার্কিং",
+      "হট টব",
+      "২৪/৭ নিরাপত্তা",
+      "হুইলচেয়ার অ্যাক্সেস",
+      "এলিভেটর অ্যাক্সেস",
+      "ডিশওয়াশার",
+      "উচ্চগতির ইন্টারনেট",
+      "এয়ার কন্ডিশনিং",
+      "স্মার্ট টিভি",
+      "আউটডোর গ্রিল/বারবিকিউ"
+    ],
+    "rates": {
+      "weekly": 1000,
+      "monthly": 4000
+    },
+    "seller_info": {
+      "name": "জেন স্মিথ",
+      "email": "jane@gmail.com",
+      "phone": "০১৬১২৩৪৫৬৭৮"
+    },
+    "images": ["b1.jpg", "b2.jpg", "b3.jpg"],
+    "is_featured": false,
+    "createdAt": "2024-01-02T00:00:00.000Z",
+    "updatedAt": "2024-01-02T00:00:00.000Z"
+  },
+  {
+    "_id": "3",
+    "owner": "2",
+    "name": "Luxury Condo with a View",
+    "type": "Condo",
+    "description": "এই মনোরম কন্ডোতে বিলাসিতা উপভোগ করুন এবং চমৎকার দৃশ্য উপভোগ করুন।",
+    "location": {
+      "street": "৫০০ লাক্স লেন",
+      "city": "চট্টগ্রাম",
+      "state": "চট্টগ্রাম",
+      "zipcode": "৪০০০"
+    },
+    "beds": 3,
+    "baths": 2,
+    "square_feet": 2200,
+    "amenities": [
+      "Wifi",
+      "পূর্ণাঙ্গ রান্নাঘর",
+      "ওয়াশার এবং ড্রায়ার",
+      "বিনামূল্যে পার্কিং",
+      "হট টব",
+      "২৪/৭ নিরাপত্তা",
+      "হুইলচেয়ার অ্যাক্সেস",
+      "এলিভেটর অ্যাক্সেস",
+      "ডিশওয়াশার",
+      "সুইমিং পুল",
+      "জিম/ফিটনেস সেন্টার",
+      "এয়ার কন্ডিশনিং",
+      "স্মার্ট টিভি",
+      "কফি মেকার"
+    ],
+    "rates": {
+      "nightly": 200,
+      "weekly": 750,
+      "monthly": 3300
+    },
+    "seller_info": {
+      "name": "ডেভিড জনসন",
+      "email": "david@gmail.com",
+      "phone": "০১৮১২৩৪৫৬৭৮"
+    },
+    "images": ["c1.jpg", "c2.jpg", "c3.jpg"],
+    "is_featured": false,
+    "createdAt": "2024-01-03T00:00:00.000Z",
+    "updatedAt": "2024-01-03T00:00:00.000Z"
+  },
+  {
+    "_id": "4",
+    "owner": "2",
+    "name": "Charming Cottage Getaway",
+    "type": "Cottage Or Cabin",
+    "description": "শান্তি উপভোগ করতে এই মনের মত কটেজে পালিয়ে আসুন।",
+    "location": {
+      "street": "১২৩ কোটেজ রোড",
+      "city": "সিলেট",
+      "state": "সিলেট",
+      "zipcode": "৩১০০"
+    },
+    "beds": 1,
+    "baths": 1,
+    "square_feet": 900,
+    "amenities": [
+      "ফায়ারপ্লেস",
+      "আউটডোর গ্রিল/বারবিকিউ",
+      "বারান্দা",
+      "কফি মেকার"
+    ],
+    "rates": {
+      "weekly": 2000
+    },
+    "seller_info": {
+      "name": "এমিলি ডেভিস",
+      "email": "emily@gmail.com",
+      "phone": "০১৭৯৮৭৬৫৪৩২"
+    },
+    "images": ["d1.jpg", "d2.jpg", "d3.jpg"],
+    "is_featured": false,
+    "createdAt": "2024-01-04T00:00:00.000Z",
+    "updatedAt": "2024-01-04T00:00:00.000Z"
+  },
+  {
+    "_id": "5",
+    "owner": "3",
+    "name": "Modern Downtown Studio",
+    "type": "Studio",
+    "description": "এই আধুনিক ডাউনটাউন স্টুডিও এপার্টমেন্টে থাকুন স্টাইলের সাথে।",
+    "location": {
+      "street": "৭৫ আধুনিক এভিনিউ",
+      "city": "খুলনা",
+      "state": "খুলনা",
+      "zipcode": "৯১০০"
+    },
+    "beds": 1,
+    "baths": 1,
+    "square_feet": 900,
+    "amenities": [
+      "উচ্চগতির ইন্টারনেট",
+      "স্মার্ট টিভি",
+      "এয়ার কন্ডিশনিং",
+      "জিম/ফিটনেস সেন্টার",
+      "আউটডোর গ্রিল/বারবিকিউ"
+    ],
+    "rates": {
+      "weekly": 1100,
+      "monthly": 4200
+    },
+    "seller_info": {
+      "name": "মাইকেল ব্রাউন",
+      "email": "michael@gmail.com",
+      "phone": "০১৫১২৩৪৫৬৭৮"
+    },
+    "images": ["e1.jpg", "e2.jpg", "e3.jpg"],
+    "is_featured": true,
+    "createdAt": "2024-01-05T00:00:00.000Z",
+    "updatedAt": "2024-01-05T00:00:00.000Z"
+  },
+  {
+    "_id": "6",
+    "owner": "3",
+    "name": "Seaside Retreat",
+    "type": "House",
+    "description": "এই সাইড হাউসে গিয়ে একটি আরামদায়ক ছুটির সময় কাটান।",
+    "location": {
+      "street": "অখিলপুর সড়ক",
+      "city": "খুলনা",
+      "state": "খুলনা",
+      "zipcode": "9000"
+    },
+    "beds": 4,
+    "baths": 3,
+    "square_feet": 2800,
+    "amenities": [
+      "বিচে প্রবেশাধিকার",
+      "স্বিমিং পুল",
+      "বালকনি/প্যাটিও",
+      "স্মার্ট টিভি",
+      "আউটডোর গ্রিল/বিবিকিউ"
+    ],
+    "rates": {
+      "nightly": 500,
+      "weekly": 2500
+    },
+    "seller_info": {
+      "name": "সারা উইলসন",
+      "email": "sarah@gmail.com",
+      "phone": "305-555-5555"
+    },
+    "images": ["f1.jpg", "f2.jpg", "f3.jpg"],
+    "is_featured": true,
+    "createdAt": "2024-01-06T00:00:00.000Z",
+    "updatedAt": "2024-01-06T00:00:00.000Z"
+  },
+  {
+    "_id": "7",
+    "owner": "4",
+    "name": "Rustic Cabin in the Woods",
+    "type": "Cottage Or Cabin",
+    "description": "এই আরামদায়ক রাস্টিক কেবিনে গিয়ে প্রকৃতির সঙ্গে সময় কাটান।",
+    "location": {
+      "street": "শালবাগান সড়ক",
+      "city": "রংপুর",
+      "state": "রংপুর",
+      "zipcode": "5400"
+    },
+    "beds": 2,
+    "baths": 1,
+    "square_feet": 1100,
+    "amenities": [
+      "ফায়ারপ্লেস",
+      "আউটডোর গ্রিল/বিবিকিউ",
+      "হাইকিং ট্রেইল অ্যাক্সেস",
+      "পোষা প্রাণী-বান্ধব"
+    ],
+    "rates": {
+      "nightly": 475,
+      "weekly": 2000
+    },
+    "seller_info": {
+      "name": "রবার্ট অ্যান্ডারসন",
+      "email": "robert@gmail.com",
+      "phone": "303-555-5555"
+    },
+    "images": ["g1.jpg", "g2.jpg", "g3.jpg"],
+    "is_featured": false,
+    "createdAt": "2024-01-07T00:00:00.000Z",
+    "updatedAt": "2024-01-07T00:00:00.000Z"
+  },
+  {
+    "_id": "8",
+    "owner": "5",
+    "name": "Ski-In/Ski-Out Chalet",
+    "type": "Chalet",
+    "description": "এই আরামদায়ক স্কি-ইন/স্কি-আউট শ্যালেট থেকে স্কি স্লোপে যাওয়ার সুবিধা নিন।",
+    "location": {
+      "street": "মাউন্টেন রোড",
+      "city": "হিমচল",
+      "state": "হিমচল",
+      "zipcode": "81611"
+    },
+    "beds": 3,
+    "baths": 2,
+    "square_feet": 1800,
+    "amenities": [
+      "স্কি সরঞ্জাম সংরক্ষণ",
+      "ফায়ারপ্লেস",
+      "বালকনি/প্যাটিও",
+      "স্মার্ট টিভি"
+    ],
+    "rates": {
+      "nightly": 300,
+      "weekly": 1100
+    },
+    "seller_info": {
+      "name": "জেনিফার মার্টিন",
+      "email": "jennifer@gmail.com",
+      "phone": "970-555-5555"
+    },
+    "images": ["h1.jpg", "h2.jpg", "h3.jpg"],
+    "is_featured": false,
+    "createdAt": "2024-01-08T00:00:00.000Z",
+    "updatedAt": "2024-01-08T00:00:00.000Z"
+  },
+  {
+    "_id": "9",
+    "owner": "6",
+    "name": "Mountain View Retreat",
+    "type": "House",
+    "description": "এই প্রশস্ত রিট্রিট থেকে মনোরম পাহাড়ের দৃশ্য উপভোগ করুন।",
+    "location": {
+      "street": "সামিট ড্রাইভ",
+      "city": "সিলেট",
+      "state": "সিলেট",
+      "zipcode": "3100"
+    },
+    "beds": 4,
+    "baths": 3,
+    "square_feet": 2400,
+    "amenities": [
+      "পাহাড়ের দৃশ্য",
+      "হাইকিং ট্রেইল অ্যাক্সেস",
+      "এয়ার কন্ডিশনিং",
+      "স্মার্ট টিভি",
+      "আউটডোর গ্রিল/বিবিকিউ"
+    ],
+    "rates": {
+      "weekly": 1000,
+      "monthly": 3800
+    },
+    "seller_info": {
+      "name": "লিসা টেইলর",
+      "email": "lisa@gmail.com",
+      "phone": "303-555-5555"
+    },
+    "images": ["i1.jpg", "i2.jpg", "i3.jpg"],
+    "is_featured": false,
+    "createdAt": "2024-01-09T00:00:00.000Z",
+    "updatedAt": "2024-01-09T00:00:00.000Z"
+  },
+  {
+    "_id": "10",
+    "owner": "7",
+    "name": "Historic Downtown Loft",
+    "type": "Apartment",
+    "description": "এই ঐতিহাসিক ডাউনটাউন লফটে থাকলে আপনি অতীতে ফিরে যেতে পারবেন।",
+    "location": {
+      "street": "ইতিহাস সড়ক",
+      "city": "ঢাকা",
+      "state": "ঢাকা",
+      "zipcode": "1200"
+    },
+    "beds": 2,
+    "baths": 1,
+    "square_feet": 1200,
+    "amenities": [
+      "হাই-স্পিড ইন্টারনেট",
+      "এয়ার কন্ডিশনিং",
+      "স্মার্ট টিভি",
+      "কফি মেকার"
+    ],
+    "rates": {
+      "weekly": 550,
+      "monthly": 2100
+    },
+    "seller_info": {
+      "name": "ম্যাথিউ হ্যারিস",
+      "email": "matthew@gmail.com",
+      "phone": "215-555-5555"
+    },
+    "images": ["j1.jpg", "j2.jpg", "j3.jpg"],
+    "is_featured": false,
+    "createdAt": "2024-01-10T00:00:00.000Z",
+    "updatedAt": "2024-01-10T00:00:00.000Z"
+  }
+]
