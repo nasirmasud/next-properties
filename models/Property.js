@@ -1,4 +1,4 @@
-const { Schema, models, model } = require("mongoose");
+import { Schema, model, models } from "mongoose";
 
 const PropertySchema = new Schema(
   {
@@ -7,7 +7,7 @@ const PropertySchema = new Schema(
       ref: "User",
       required: true,
     },
-    username: {
+    name: {
       type: String,
       required: true,
     },
@@ -19,10 +19,10 @@ const PropertySchema = new Schema(
       type: String,
     },
     location: {
-      city: {
+      street: {
         type: String,
       },
-      street: {
+      city: {
         type: String,
       },
       state: {
@@ -46,7 +46,7 @@ const PropertySchema = new Schema(
     },
     amenities: [
       {
-        type: string,
+        type: String,
       },
     ],
     rates: {
