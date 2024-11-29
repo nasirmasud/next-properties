@@ -7,8 +7,8 @@ const Hero = () => {
       <Image
         src={background}
         alt='background'
-        layout='fill'
-        objectFit='cover'
+        fill
+        style={{ objectFit: "cover" }}
         quality={100}
         className='z-0'
       />
