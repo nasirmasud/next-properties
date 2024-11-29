@@ -1,5 +1,5 @@
 "use client";
-import { fetchProperty } from "@/app/properties/requests";
+import { fetchProperty } from "@/utills/requests";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
