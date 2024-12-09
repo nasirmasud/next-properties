@@ -3,26 +3,26 @@ import { useState } from "react";
 
 const PropertyAddForm = () => {
   const [fields, setFields] = useState({
-    type: "Apartment",
-    name: "Test-Property",
+    type: "",
+    name: "",
     description: "",
     location: {
       street: "",
-      city: "Test City",
-      state: "Test State",
+      city: "",
+      state: "",
       zipcode: "",
     },
-    beds: 2,
-    baths: 1,
-    square_feet: 1500,
-    amenities: ["Wifi"],
+    beds: "",
+    baths: "",
+    square_feet: "",
+    amenities: [],
     rates: {
       weekly: "",
-      monthly: 4200,
+      monthly: "",
     },
     seller_info: {
       name: "",
-      email: "test@test.com",
+      email: "",
       phone: "",
     },
     images: [],
@@ -263,6 +263,18 @@ const PropertyAddForm = () => {
               onChange={handleAmenitiesChange}
             />
             <label htmlFor='amenity_kitchen'>Full kitchen</label>
+          </div>
+          <div>
+            <input
+              type='checkbox'
+              id='amenity_outdoor_grill_barbecue'
+              name='amenities'
+              value='Outdoor Grill/Barbecue'
+              className='mr-2'
+              checked={fields.amenities.includes("Outdoor Grill/Barbecue")}
+              onChange={handleAmenitiesChange}
+            />
+            <label htmlFor='amenity_kitchen'>Outdoor Grill/Barbecue</label>
           </div>
           <div>
             <input
