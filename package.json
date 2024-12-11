@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "cloudinary": "^2.5.1",
+    "maplibre-gl": "^4.7.1",
     "mongodb": "^6.10.0",
     "mongoose": "^8.8.1",
     "next": "15.0.2",
