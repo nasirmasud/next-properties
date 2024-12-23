@@ -9,7 +9,8 @@ export const POST = async (request) => {
   try {
     await connectDB();
 
-    const { email, phone, message, property, recipient } = request.json();
+    const { name, email, phone, message, property, recipient } =
+      await request.json();
     const sessionUser = await getSessionUser();
 
     if (!sessionUser || !sessionUser.user) {
@@ -29,6 +30,7 @@ export const POST = async (request) => {
       sender: user.id,
       recipient,
       property,
+      name,
       email,
       phone,
       body: message,
