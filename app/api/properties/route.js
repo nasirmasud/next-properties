@@ -6,6 +6,7 @@ import { getSessionUser } from "@/utills/getSessionUser";
 //GET /api/properties
 export const GET = async (request) => {
   try {
+    console.log("🔄 GET /api/properties - Starting request...");
     console.log("🔄 GET /api/properties - Connecting to DB...");
     await connectDB();
     console.log("✅ DB Connected - Fetching properties...");

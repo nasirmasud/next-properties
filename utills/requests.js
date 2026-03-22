@@ -1,21 +1,23 @@
-// For server-side fetches, use absolute URL
+// For internal API calls
 const getApiUrl = () => {
   // In browser: use relative path
   if (typeof window !== "undefined") {
     return ""; // Browser uses relative URLs
   }
-  // On server (Vercel or local): use absolute URL
-  const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_DOMAIN;
+  // On server: use absolute URL
+  // Try environment variables first, then fallback to localhost
+  const apiUrl = process.env.NEXTAUTH_URL || process.env.NEXT_PUBLIC_API_DOMAIN;
 
-  if (!apiUrl) {
-    console.warn(
-      "⚠️ Neither API_URL nor NEXT_PUBLIC_API_DOMAIN set - using localhost fallback",
-    );
-    return "http://localhost:3000";
+  if (apiUrl) {
+    // Remove trailing slash if present
+    return apiUrl.replace(/\/$/, "");
   }
 
-  console.log("✅ Using server API URL:", apiUrl);
-  return apiUrl;
+  // Fallback to localhost for development
+  console.warn(
+    "⚠️ Using localhost fallback - set NEXTAUTH_URL or NEXT_PUBLIC_API_DOMAIN for production",
+  );
+  return "http://localhost:3000";
 };
 
 //Fetch all Properties
