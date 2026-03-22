@@ -5,15 +5,26 @@ async function fetchProperties() {
   try {
     //Handle the case where the domain is not available yet
     if (!apiDomain) {
+      console.error("❌ NEXT_PUBLIC_API_DOMAIN is not set");
       return [];
     }
-    const res = await fetch(`${apiDomain}/properties`, { cache: "no-store" });
+    const url = `${apiDomain}/properties`;
+    console.log("🔄 Fetching properties from:", url);
+    const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      const errorText = await res.text();
+      console.error(`❌ API Error ${res.status}:`, errorText);
+      throw new Error(`Failed to fetch data: ${res.status} ${errorText}`);
     }
-    return res.json();
+    const data = await res.json();
+    console.log("✅ Properties fetched successfully:", data.length, "items");
+    return data;
   } catch (error) {
-    console.log(error);
+    console.error("❌ Error in fetchProperties:", {
+      message: error.message,
+      stack: error.stack,
+      apiDomain,
+    });
     return [];
   }
 }

@@ -6,15 +6,26 @@ import { getSessionUser } from "@/utills/getSessionUser";
 //GET /api/properties
 export const GET = async (request) => {
   try {
+    console.log("🔄 GET /api/properties - Connecting to DB...");
     await connectDB();
+    console.log("✅ DB Connected - Fetching properties...");
     const properties = await Property.find({});
+    console.log(`✅ Found ${properties.length} properties`);
 
     return new Response(JSON.stringify(properties), {
       status: 200,
+      headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
-    console.log(error);
-    return new Response("Something Went Wrong", { status: 500 });
+    console.error("❌ GET /api/properties error:", {
+      message: error.message,
+      name: error.name,
+      stack: error.stack,
+    });
+    return new Response(
+      JSON.stringify({ error: error.message, type: error.name }),
+      { status: 500, headers: { "Content-Type": "application/json" } },
+    );
   }
 };
 
@@ -75,7 +86,7 @@ export const POST = async (request) => {
       //Make request to upload to Cloudinary
       const result = await cloudinary.uploader.upload(
         `data:image/png;base64,${imageBase64}`,
-        { folder: "nextproperties" }
+        { folder: "nextproperties" },
       );
       imagesUploadPromises.push(result.secure_url);
 
@@ -91,7 +102,7 @@ export const POST = async (request) => {
 
     //redirect to property page after submit to database
     return Response.redirect(
-      `${process.env.NEXTAUTH_URL}/properties/${newProperty._id}`
+      `${process.env.NEXTAUTH_URL}/properties/${newProperty._id}`,
     );
 
     // return new Response(JSON.stringify({ message: "Success" }), {
