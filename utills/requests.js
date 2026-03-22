@@ -71,95 +71,70 @@
 
 // export { fetchProperties, fetchProperty };
 
-// utilities/requests.js
+// utills/requests.js
 
-// Helper function to get the correct API URL
-const getApiUrl = () => {
-  // On the client (browser), use relative URLs
+// সার্ভার সাইড এবং ক্লায়েন্ট সাইডের জন্য আলাদাভাবে URL বের করার ফাংশন
+const getBaseUrl = () => {
+  // ক্লায়েন্ট সাইড (ব্রাউজার): রিলেটিভ পাথ ব্যবহার করবে
   if (typeof window !== "undefined") {
     return "";
   }
 
-  // On the server (SSR/SSG), use absolute URL
-  // Vercel automatically provides these environment variables
+  // সার্ভার সাইড (Node.js): ভারসেলের প্রোডাকশন URL ব্যবহার করবে
+  // ভারসেল স্বয়ংক্রিয়ভাবে এই ভেরিয়েবল সেট করে
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  // For preview deployments
-  if (process.env.VERCEL_BRANCH_URL) {
-    return `https://${process.env.VERCEL_BRANCH_URL}`;
-  }
-
-  // Use custom environment variable if set
-  const apiUrl = process.env.NEXTAUTH_URL || process.env.NEXT_PUBLIC_API_DOMAIN;
-  if (apiUrl) {
-    return apiUrl.replace(/\/$/, "");
-  }
-
-  // Fallback for local development
+  // লোকাল ডেভেলপমেন্টের জন্য ফallback
   return "http://localhost:3000";
 };
 
-// Fetch all properties
+// সব প্রোপার্টি আনার ফাংশন
 export async function fetchProperties() {
-  const apiDomain = getApiUrl();
+  const baseUrl = getBaseUrl();
+  const url = `${baseUrl}/api/properties`;
 
   try {
-    const url = `${apiDomain}/api/properties`;
-    console.log("📍 Fetching properties from:", url);
+    console.log("Fetching properties from:", url); // ডিবাগিং এর জন্য
 
     const res = await fetch(url, {
-      cache: "no-store",
-      // Add timeout to prevent hanging in production
-      signal: AbortSignal.timeout(15000),
+      cache: "no-store", // সর্বদা নতুন ডাটা আনার জন্য
     });
 
     if (!res.ok) {
-      const errorText = await res.text();
-      console.error(`❌ API Error ${res.status}:`, errorText);
-      throw new Error(`Failed to fetch data: ${res.status}`);
+      throw new Error(`HTTP error! status: ${res.status}`);
     }
 
-    const data = await res.json();
-    console.log("✅ Properties fetched:", data.length, "items");
-    return data;
+    const properties = await res.json();
+    console.log("Properties fetched:", properties.length); // ডিবাগিং এর জন্য
+    return properties;
   } catch (error) {
-    console.error("❌ Error fetching properties:", error.message);
-    return [];
+    console.error("Error in fetchProperties:", error);
+    return []; // error হলে খালি array রিটার্ন করবে, যাতে পেজ crash না করে
   }
 }
 
-// Fetch single property by ID
+// একক প্রোপার্টি আনার ফাংশন
 export async function fetchProperty(id) {
-  if (!id) {
-    console.error("❌ No property ID provided");
-    return null;
-  }
-
-  const apiDomain = getApiUrl();
+  const baseUrl = getBaseUrl();
+  const url = `${baseUrl}/api/properties/${id}`;
 
   try {
-    const url = `${apiDomain}/api/properties/${id}`;
-    console.log("📍 Fetching property from:", url);
+    console.log("Fetching property from:", url);
 
     const res = await fetch(url, {
       cache: "no-store",
-      signal: AbortSignal.timeout(15000),
     });
 
     if (!res.ok) {
-      console.error(
-        `❌ API Error ${res.status}: Failed to fetch property ${id}`,
-      );
-      return null;
+      throw new Error(`HTTP error! status: ${res.status}`);
     }
 
-    const data = await res.json();
-    console.log("✅ Property fetched:", data?.name || "Unknown");
-    return data;
+    const property = await res.json();
+    return property;
   } catch (error) {
-    console.error("❌ Error fetching property:", error.message);
+    console.error(`Error in fetchProperty for id ${id}:`, error);
     return null;
   }
 }
