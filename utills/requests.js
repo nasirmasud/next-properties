@@ -1,8 +1,24 @@
-const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || "/api";
+// For server-side fetches, use absolute URL
+const getApiUrl = () => {
+  // In browser: use relative path
+  if (typeof window !== "undefined") {
+    return process.env.NEXT_PUBLIC_API_DOMAIN || "/api";
+  }
+  // On server (Vercel or local): use absolute URL
+  const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_DOMAIN;
+  
+  if (!apiUrl) {
+    console.warn("⚠️ API_URL not set - using fallback /api");
+    return "/api";
+  }
+  
+  return apiUrl;
+};
 
 //Fetch all Properties
 async function fetchProperties() {
   try {
+    const apiDomain = getApiUrl();
     //Log which domain is being used
     console.log("📍 Using API Domain:", apiDomain);
     const url = `${apiDomain}/properties`;
@@ -29,6 +45,7 @@ async function fetchProperties() {
 //Fetch single Properties
 async function fetchProperty(id) {
   try {
+    const apiDomain = getApiUrl();
     const url = `${apiDomain}/properties/${id}`;
     console.log("🔄 Fetching property from:", url);
     const res = await fetch(url);
