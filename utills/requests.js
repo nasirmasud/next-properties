@@ -5,13 +5,14 @@ const getApiUrl = () => {
     return process.env.NEXT_PUBLIC_API_DOMAIN || "/api";
   }
   // On server (Vercel or local): use absolute URL
-  const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_DOMAIN;
-  
+  const apiUrl = process.env.API_URL;
+
   if (!apiUrl) {
-    console.warn("⚠️ API_URL not set - using fallback /api");
-    return "/api";
+    console.warn("⚠️ API_URL not set - properties won't load");
+    return "/api"; // Fallback, but won't work on server
   }
-  
+
+  console.log("✅ Using server API_URL:", apiUrl);
   return apiUrl;
 };
 
