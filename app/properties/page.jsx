@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import PropertyCard from "@/components/PropertyCard";
 import PropertySearchForm from "@/components/PropertySearchForm";
 import { fetchProperties } from "@/utills/requests";
