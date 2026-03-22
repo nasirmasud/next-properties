@@ -1,13 +1,10 @@
-const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
+const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || "/api";
 
 //Fetch all Properties
 async function fetchProperties() {
   try {
-    //Handle the case where the domain is not available yet
-    if (!apiDomain) {
-      console.error("❌ NEXT_PUBLIC_API_DOMAIN is not set");
-      return [];
-    }
+    //Log which domain is being used
+    console.log("📍 Using API Domain:", apiDomain);
     const url = `${apiDomain}/properties`;
     console.log("🔄 Fetching properties from:", url);
     const res = await fetch(url, { cache: "no-store" });
@@ -31,12 +28,10 @@ async function fetchProperties() {
 
 //Fetch single Properties
 async function fetchProperty(id) {
-  //Handle the case where the domain is not available yet
   try {
-    if (!apiDomain) {
-      return null;
-    }
-    const res = await fetch(`${apiDomain}/properties/${id}`);
+    const url = `${apiDomain}/properties/${id}`;
+    console.log("🔄 Fetching property from:", url);
+    const res = await fetch(url);
 
     if (!res.ok) {
       throw new Error("Failed to fetch data");
