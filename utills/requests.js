@@ -2,16 +2,16 @@
 const getApiUrl = () => {
   // In browser: use relative path
   if (typeof window !== "undefined") {
-    return process.env.NEXT_PUBLIC_API_DOMAIN || "/api";
+    return ""; // Browser uses relative URLs
   }
   // On server (Vercel or local): use absolute URL
   const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_DOMAIN;
 
   if (!apiUrl) {
     console.warn(
-      "⚠️ Neither API_URL nor NEXT_PUBLIC_API_DOMAIN set - using /api fallback",
+      "⚠️ Neither API_URL nor NEXT_PUBLIC_API_DOMAIN set - using localhost fallback",
     );
-    return "/api";
+    return "http://localhost:3000";
   }
 
   console.log("✅ Using server API URL:", apiUrl);
