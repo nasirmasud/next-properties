@@ -73,68 +73,49 @@
 
 // utills/requests.js
 
-// সার্ভার সাইড এবং ক্লায়েন্ট সাইডের জন্য আলাদাভাবে URL বের করার ফাংশন
-const getBaseUrl = () => {
-  // ক্লায়েন্ট সাইড (ব্রাউজার): রিলেটিভ পাথ ব্যবহার করবে
-  if (typeof window !== "undefined") {
-    return "";
-  }
-
-  // সার্ভার সাইড (Node.js): ভারসেলের প্রোডাকশন URL ব্যবহার করবে
-  // ভারসেল স্বয়ংক্রিয়ভাবে এই ভেরিয়েবল সেট করে
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`;
-  }
-
-  // লোকাল ডেভেলপমেন্টের জন্য ফallback
-  return "http://localhost:3000";
-};
-
-// সব প্রোপার্টি আনার ফাংশন
+// Server Component এর জন্য fetch function - সরাসরি URL ব্যবহার করবে
 export async function fetchProperties() {
-  const baseUrl = getBaseUrl();
+  // Server Side এ চললে VERCEL_URL ব্যবহার করবে
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : process.env.NEXTAUTH_URL || "http://localhost:3000";
+
   const url = `${baseUrl}/api/properties`;
 
   try {
-    console.log("Fetching properties from:", url); // ডিবাগিং এর জন্য
-
+    console.log("🔍 Fetching from:", url);
     const res = await fetch(url, {
-      cache: "no-store", // সর্বদা নতুন ডাটা আনার জন্য
+      cache: "no-store",
+      next: { revalidate: 0 },
     });
 
     if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
+      console.error("❌ API Response not OK:", res.status);
+      return [];
     }
 
-    const properties = await res.json();
-    console.log("Properties fetched:", properties.length); // ডিবাগিং এর জন্য
-    return properties;
+    const data = await res.json();
+    console.log("✅ Fetched properties:", data.length);
+    return data;
   } catch (error) {
-    console.error("Error in fetchProperties:", error);
-    return []; // error হলে খালি array রিটার্ন করবে, যাতে পেজ crash না করে
+    console.error("❌ Fetch error:", error);
+    return [];
   }
 }
 
-// একক প্রোপার্টি আনার ফাংশন
 export async function fetchProperty(id) {
-  const baseUrl = getBaseUrl();
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : process.env.NEXTAUTH_URL || "http://localhost:3000";
+
   const url = `${baseUrl}/api/properties/${id}`;
 
   try {
-    console.log("Fetching property from:", url);
-
-    const res = await fetch(url, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-
-    const property = await res.json();
-    return property;
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) return null;
+    return await res.json();
   } catch (error) {
-    console.error(`Error in fetchProperty for id ${id}:`, error);
+    console.error("❌ Fetch property error:", error);
     return null;
   }
 }
