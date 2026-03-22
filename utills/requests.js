@@ -24,7 +24,7 @@ async function fetchProperties() {
   try {
     //Log which domain is being used
     console.log("📍 Using API Domain:", apiDomain);
-    const url = `${apiDomain}/properties`;
+    const url = `${apiDomain}/api/properties`; // Always include /api/
     console.log("🔄 Fetching properties from:", url);
     const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) {
@@ -49,7 +49,7 @@ async function fetchProperties() {
 async function fetchProperty(id) {
   const apiDomain = getApiUrl();
   try {
-    const url = `${apiDomain}/properties/${id}`;
+    const url = `${apiDomain}/api/properties/${id}`; // Always include /api/
     console.log("🔄 Fetching property from:", url);
     const res = await fetch(url);
 
