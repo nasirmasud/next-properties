@@ -5,21 +5,23 @@ const getApiUrl = () => {
     return process.env.NEXT_PUBLIC_API_DOMAIN || "/api";
   }
   // On server (Vercel or local): use absolute URL
-  const apiUrl = process.env.API_URL;
+  const apiUrl = process.env.API_URL || process.env.NEXT_PUBLIC_API_DOMAIN;
 
   if (!apiUrl) {
-    console.warn("⚠️ API_URL not set - properties won't load");
-    return "/api"; // Fallback, but won't work on server
+    console.warn(
+      "⚠️ Neither API_URL nor NEXT_PUBLIC_API_DOMAIN set - using /api fallback",
+    );
+    return "/api";
   }
 
-  console.log("✅ Using server API_URL:", apiUrl);
+  console.log("✅ Using server API URL:", apiUrl);
   return apiUrl;
 };
 
 //Fetch all Properties
 async function fetchProperties() {
+  const apiDomain = getApiUrl();
   try {
-    const apiDomain = getApiUrl();
     //Log which domain is being used
     console.log("📍 Using API Domain:", apiDomain);
     const url = `${apiDomain}/properties`;
@@ -45,8 +47,8 @@ async function fetchProperties() {
 
 //Fetch single Properties
 async function fetchProperty(id) {
+  const apiDomain = getApiUrl();
   try {
-    const apiDomain = getApiUrl();
     const url = `${apiDomain}/properties/${id}`;
     console.log("🔄 Fetching property from:", url);
     const res = await fetch(url);
@@ -56,7 +58,11 @@ async function fetchProperty(id) {
     }
     return await res.json();
   } catch (error) {
-    console.error("Error fetching property:", error);
+    console.error("Error fetching property:", {
+      id,
+      apiDomain,
+      message: error.message,
+    });
     return null;
   }
 }
