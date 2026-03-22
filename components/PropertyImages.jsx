@@ -1,12 +1,16 @@
 import Image from "next/image";
 
 const PropertyImages = ({ images }) => {
+  const getImageSrc = (image) => {
+    return image.startsWith("http") ? image : `/images/properties/${image}`;
+  };
+
   return (
     <section className='bg-blue-50 p-4'>
       <div className='container mx auto'>
         {images.length === 1 ? (
           <Image
-            src={images[0]}
+            src={getImageSrc(images[0])}
             alt=''
             className='object-cover h-[400px] mx-auto rounded-xl'
             width={1800}
@@ -25,7 +29,7 @@ const PropertyImages = ({ images }) => {
                 }`}
               >
                 <Image
-                  src={image}
+                  src={getImageSrc(image)}
                   alt=''
                   className='object-cover h-[400px] w-full rounded-xl'
                   width={1800}

@@ -23,7 +23,11 @@ const PropertyCard = ({ property }) => {
   return (
     <div className='bg-white rounded-xl shadow-md relative'>
       <Image
-        src={property.images[0]}
+        src={
+          property.images[0].startsWith("http")
+            ? property.images[0]
+            : `/images/properties/${property.images[0]}`
+        }
         alt=''
         sizes='100vw'
         height={0}

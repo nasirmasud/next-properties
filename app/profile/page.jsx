@@ -17,6 +17,10 @@ const ProfilePage = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState([true]);
 
+  const getImageSrc = (image) => {
+    return image.startsWith("http") ? image : `/images/properties/${image}`;
+  };
+
   useEffect(() => {
     const fetchUserProperties = async (userId) => {
       if (!userId) {
@@ -42,7 +46,7 @@ const ProfilePage = () => {
 
   const handleDeleteProperty = async (propertyId) => {
     const confirmed = window.confirm(
-      "Are you sure, You want to Delete this property?"
+      "Are you sure, You want to Delete this property?",
     );
 
     if (!confirmed) return;
@@ -54,7 +58,7 @@ const ProfilePage = () => {
       if (res.status === 200) {
         //Remove the property from the UI
         const updatedProperties = properties.filter(
-          (property) => property._id !== propertyId
+          (property) => property._id !== propertyId,
         );
         setProperties(updatedProperties);
         toast.success("Property Deleted");
@@ -104,7 +108,7 @@ const ProfilePage = () => {
                     <Link href={`/properties/${property._id}`}>
                       <Image
                         className='h-32 w-full rounded-md object-cover'
-                        src={property.images[0]}
+                        src={getImageSrc(property.images[0])}
                         alt=''
                         width={500}
                         height={100}
